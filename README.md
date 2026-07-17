@@ -103,21 +103,52 @@ sequenceDiagram
 
 ```
 expense-tracker-api/
-├── src/
-│   ├── middleware/
-│   │   ├── auth.js          # JWT verification middleware
-│   │   └── logger.js        # Request logging middleware
-│   └── routes/
-│       ├── auth.js          # /api/auth — register & login
-│       ├── expenses.js      # /api/expenses — CRUD operations
-│       └── userRoutes.js    # User-related route bindings
-├── index.js                 # App entry point, middleware & route mounting
-├── package.json
-└── .env                     # Environment variables (not committed)
+├── backend/
+│   ├── src/
+│   │   ├── middleware/
+│   │   │   ├── auth.js          # JWT verification middleware
+│   │   │   └── logger.js        # Request logging middleware
+│   │   └── routes/
+│   │       ├── auth.js          # /api/auth — register & login
+│   │       ├── expenses.js      # /api/expenses — CRUD operations
+│   │       └── userRoutes.js    # User-related route bindings
+│   ├── index.js                 # App entry point, middleware & route mounting
+│   ├── package.json
+│   └── .env                     # Environment variables (not committed)
+├── frontend/
+│   ├── src/
+│   │   ├── api/
+│   │   │   └── client.ts        # Typed API client
+│   │   ├── components/
+│   │   │   ├── ConfirmModal.tsx
+│   │   │   ├── ExpenseCard.tsx
+│   │   │   ├── ExpenseForm.tsx
+│   │   │   ├── Navbar.tsx
+│   │   │   └── StatsRow.tsx
+│   │   ├── context/
+│   │   │   └── AuthContext.tsx  # Global Auth Context & Provider
+│   │   ├── hooks/
+│   │   │   ├── useAuth.ts
+│   │   │   └── useExpenses.ts
+│   │   ├── pages/
+│   │   │   ├── AuthPage.tsx
+│   │   │   └── DashboardPage.tsx
+│   │   ├── types/
+│   │   │   └── index.ts         # TypeScript interfaces
+│   │   ├── App.tsx              # Component router (Auth vs Dashboard)
+│   │   ├── index.css            # Wine red and Sand design system
+│   │   └── main.tsx             # React DOM entry point
+│   ├── index.html
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── vite.config.ts
+├── .gitignore
+└── README.md
 ```
 
 ## Tech Stack
 
+### Backend
 | Layer | Technology | Purpose |
 |---|---|---|
 | Runtime | Node.js | JavaScript server runtime |
@@ -128,16 +159,25 @@ expense-tracker-api/
 | Environment | dotenv | `.env` file loading |
 | Dev Server | nodemon | Auto-restart on file changes |
 
+### Frontend
+| Layer | Technology | Purpose |
+|---|---|---|
+| Library | React 19 | Component-based UI library |
+| Language | TypeScript | Static type checking |
+| Tooling | Vite | Fast development server and build tool |
+| Styling | Vanilla CSS | Custom, responsive Wine Red and Sand design system |
+
 ## Getting Started
 
 **Prerequisites:** Node.js v18+
 
-```bash
-# Clone the repository
-git clone https://github.com/Vaibhav-S-Gowda/Expense-Tracker-API.git
-cd Expense-Tracker-API
+### Setup & Run Backend
 
-# Install dependencies
+```bash
+# Navigate to backend directory
+cd backend
+
+# Install backend dependencies
 npm install
 
 # Set up environment variables
@@ -145,12 +185,26 @@ cp .env.example .env   # then fill in your values
 
 # Start development server
 npm run dev
-
-# Start production server
-npm start
 ```
 
-The server will start on `http://localhost:3000` by default.
+The backend server will run on `http://localhost:3000` by default.
+
+### Setup & Run Frontend
+
+In a new terminal window:
+
+```bash
+# Navigate to frontend directory
+cd frontend
+
+# Install frontend dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+The frontend server will run on `http://localhost:5173` (or the next available port) by default. Use this URL to access the UI in your browser.
 
 ## Environment Variables
 
