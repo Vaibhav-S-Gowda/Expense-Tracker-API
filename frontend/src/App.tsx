@@ -1,0 +1,17 @@
+
+import { AuthProvider, useAuthContext } from './context/AuthContext';
+import { AuthPage } from './pages/AuthPage';
+import { DashboardPage } from './pages/DashboardPage';
+
+function AppContent() {
+  const { isAuthenticated } = useAuthContext();
+  return isAuthenticated ? <DashboardPage /> : <AuthPage />;
+}
+
+export default function App() {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
+  );
+}
