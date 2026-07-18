@@ -2,8 +2,6 @@
 
 A lightweight, stateless REST API for tracking personal expenses. Built with Node.js and Express, it features JWT-based authentication, per-user data isolation, and Zod-powered request validation.
 
-https://nextwork.ai/excited_pink_timid_wombat/docs/be5b55da-8807-4557-96dd-2308900d3790
-
 ## Table of Contents
 
 - [System Architecture](#system-architecture)
